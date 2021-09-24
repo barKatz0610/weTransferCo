@@ -21,7 +21,7 @@ const storage=multer.diskStorage({
 });
 
 var upload= multer({storage: storage});
-
+//post-upload and send email
 app.post('/file/:email',upload.single('file'),(req,res,next)=>{
     const file=req.file;
    // console.log(file.filename);
@@ -69,7 +69,7 @@ function sendMail(email,filePath,fileName) {
 }
 
 
-
+//download the file
 app.get('/file/:path',(req,res,next)=>{
 
     const filePath= `myFiles/${req.params.path}` ;
