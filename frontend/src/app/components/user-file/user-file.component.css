@@ -1,0 +1,43 @@
+.file-input{
+    display: none;
+}
+
+.error{
+    font-size: 12px;
+    color: red;
+    text-align: center;
+}
+.form-all{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    height: 60px;
+
+    
+
+}
+
+.form-file{
+    margin: 10px;
+}
+
+.form-group{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn-upload{
+    margin: 15px;
+}
+
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+ .td, th {
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+  }

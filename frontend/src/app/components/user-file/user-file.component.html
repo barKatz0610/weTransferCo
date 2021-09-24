@@ -1,0 +1,41 @@
+
+<form (ngSubmit)="onUpload()" #f="ngForm" >
+  <fieldset class="form-all" ngModelGroup="name">
+    <div class="form-group"  >
+      <label for="email" >Your Email: </label>
+      <input #Email id=email required ngModel name="email" type="text" class="form-control"  placeholder="Enter your email"
+      fornControlName ="email" >
+      <div class="error" *ngIf="!Email.value && f.submitted " >
+           <span>Email is required</span>
+           <span >Email is invalid</span>
+      </div>
+    </div>
+    <div>
+      <input ngModel name="file" type="file" class="form-file" required (change)="onChange($event)" #fileUpload>
+    </div>
+  </fieldset>
+  <div>
+      <button type="submit" class="btn-upload">Upload and Save</button>
+  </div>
+</form>
+
+
+
+<div class="container text-center" *ngIf="multipleFilesNames !== []">
+  <h2>Your Files:</h2>
+  <table>
+    <tr>
+      <th>File Name</th>
+      <th>Want to Download?</th>
+    </tr>
+    <tr *ngFor= 'let file of multipleFilesNames'>
+      <td>
+        <div class="container" *ngIf="loading">
+        <h3>Loading...</h3>
+      </div>
+        {{file}}</td>
+      <td><button (click)="onDownload(file)">Download</button></td>
+    </tr>
+  </table>
+</div>
+
