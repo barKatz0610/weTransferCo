@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransferService } from '../../services/transfer.service';
 import { ViewChild } from '@angular/core';
 import {saveAs} from 'file-saver';
-import { FormControl,FormGroup } from '@angular/forms';
-//import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -14,15 +13,12 @@ import { FormControl,FormGroup } from '@angular/forms';
 export class UserFileComponent implements OnInit {
 
   
-  //@ViewChild('f') form: any;
+  @ViewChild('f') form: any;
   shortLink:string="";
   loading:boolean=false;
   file:File | undefined;
   multipleFilesNames : string[]=[];
-  form : FormGroup = new FormGroup({
-    emailForm: new FormControl(''),
-    fileForm: new FormControl('')
-  });
+
    
   
 
@@ -43,7 +39,7 @@ export class UserFileComponent implements OnInit {
 
   onUpload():void{
     console.log("our form=>",this.form);
-   let email=this.form.controls.emailForm.value;;
+   let email=this.form.controls.name.controls.email.value;
     if(this.file &&  this.validateEmail(email)){
       this.loading=!this.loading;
       this.transferService.upload(this.file,email).subscribe(
