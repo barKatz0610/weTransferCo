@@ -2,8 +2,7 @@
   <fieldset class="form-all" ngModelGroup="name">
     <div class="form-group"  >
       <label for="email" >Your Email: </label>
-      <input #Email id=email required ngModel name="email" type="text" class="form-control"  placeholder="Enter your email"
-      fornControlName ="email" >
+      <input #Email id=email required ngModel name="email" type="text" class="form-control"  placeholder="Enter your email">
       <div class="error" *ngIf=" f.submitted " >
            <span *ngIf="!Email.value " >Email is required</span>
            <span  *ngIf= "!validateEmail(Email.value) && Email.value!== ''">Email is invalid</span>
