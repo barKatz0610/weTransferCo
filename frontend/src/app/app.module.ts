@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ReactiveFormsModule,
     MatListModule,
     MatButtonModule,
+    NoopAnimationsModule,
     MatExpansionModule
   ],
   providers: [],

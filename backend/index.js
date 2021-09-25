@@ -38,19 +38,26 @@ function sendMail(email,filePath,fileName) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: 'weTransferCo@gmail.com', // generated ethereal user
-          pass: 'pvdy buyh kjbg vnsy', // generated ethereal password
+          user: 'weTransferCo@gmail.com', 
+          pass: 'pvdy buyh kjbg vnsy', 
         },
       });
       var mailOption={
           from: 'weTransferCo@gmail.com',
           to: email,
           subject: 'We Tranfser FILE',
-          html: `<h1>Hello</h1> <p> We send you your file that you uploaded. </p> <p>Now you can also download it here! <a href="http://localhost:3000/file/${fileName}">${fileName}</a></p>`
+          html: `<h1>Hello Friend</h1> <p>Now you can also download your file here: <a href="http://localhost:3000/file/${fileName}">${fileName}</a></p>`
       }
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.log('Mail ERROR=>>>',error);
+        } else {
+          console.log("Server is ready to take our messages");
+        }
+      });
       transporter.sendMail(mailOption,function(err, info){
             if(err) console.log("Something wrong =>",err);
-            else console.logl('Email sent:' + info.messageId);//this doesnt work
+            else console.logl('Email sent:' + info.messageId);
       });
 }
 
