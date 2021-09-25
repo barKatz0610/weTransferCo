@@ -48,17 +48,14 @@ export class UserFileComponent implements OnInit {
   onDownload(path:string):void{
     this.transferService.getFile(path).subscribe(data=>{
       let downloadLink = document.createElement('a');
-      console.log('data=>',data);
       downloadLink.href = window.URL.createObjectURL(data);
-      if (path){
-        downloadLink.setAttribute('download', path);
-        downloadLink.setAttribute('class','link');
-        document.body.appendChild(downloadLink);
-        const newText=document.createTextNode("Here");
-        downloadLink.appendChild(newText);
-        const currentDiv = document.getElementById("td");
-        document.body.insertBefore(downloadLink, currentDiv);
-      }
+      downloadLink.setAttribute('download', path);
+      downloadLink.setAttribute('class','link');
+      document.body.appendChild(downloadLink);
+      const newText=document.createTextNode("Here");
+      downloadLink.appendChild(newText);
+      const currentDiv = document.getElementById("td1");
+      document.body.insertBefore(downloadLink, currentDiv);
     });
   }
 

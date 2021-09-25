@@ -12,16 +12,16 @@
     border: 2px solid black;
     border-radius: 5px;
     width: 300px;
-    height: 100px;
+    height: 150px;
 
     
 
 }
 
-.form-file{
-    margin: 10px;
+.form-file, .btn-upload{
+    margin: 20px;
     position: relative;
-    top: 15px;
+    top: 30px;
 }
 
 .form-group{
@@ -35,16 +35,16 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
+}
   
  .td, th {
     border-radius: 5px;
     border: 1px solid black;
     text-align: left;
     padding: 8px;
-  }
+}
 
   .link{
     margin-top: 15px;
     text-align: right;
-  }
+}
