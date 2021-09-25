@@ -19,6 +19,7 @@ const storage=multer.diskStorage({
     }
 });
 var upload= multer({storage: storage});
+
 app.post('/file/:email',upload.single('file'),(req,res,next)=>{
     const file=req.file;
     const email=req.params.email;
@@ -30,6 +31,7 @@ app.post('/file/:email',upload.single('file'),(req,res,next)=>{
     sendMail(email,file.path,file.filename);
     res.send(file);
 });
+
 function sendMail(email,filePath,fileName) {
     var transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -44,17 +46,14 @@ function sendMail(email,filePath,fileName) {
           from: 'weTransferCo@gmail.com',
           to: email,
           subject: 'We Tranfser FILE',
-          html: '<h1>Hello</h1> <p> We send you your file that you uploaded. </p> <p>Now you can also download it here! </p>',
-          attachments: {
-              filename: fileName,
-              path: filePath,
-          }
+          html: `<h1>Hello</h1> <p> We send you your file that you uploaded. </p> <p>Now you can also download it here! <a href="http://localhost:3000/file/${fileName}">${fileName}</a></p>`
       }
       transporter.sendMail(mailOption,function(err, info){
             if(err) console.log("Something wrong =>",err);
             else console.logl('Email sent:' + info.messageId);//this doesnt work
       });
 }
+
 app.get('/file/:path',(req,res,next)=>{
     const filePath= `myFiles/${req.params.path}` ;
     console.log('file path',filePath)
@@ -65,6 +64,7 @@ app.get('/file/:path',(req,res,next)=>{
         }
     });
 });
+
 app.listen(3000, () => {
     console.log("The server started on port 3000 !!!!!!");
 });

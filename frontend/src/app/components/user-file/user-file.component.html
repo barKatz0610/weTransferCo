@@ -1,38 +1,37 @@
-<form (ngSubmit)="onUpload()" #f="ngForm" >
+
+<form (ngSubmit)="onUpload()" #f="ngForm">
   <fieldset class="form-all" ngModelGroup="name">
-    <div class="form-group"  >
+    <div class="form-group">
       <label for="email" >Your Email: </label>
-      <input #Email id=email required ngModel name="email" type="text" class="form-control"  placeholder="Enter your email">
-      <div class="error" *ngIf=" f.submitted " >
-           <span *ngIf="!Email.value " >Email is required</span>
-           <span  *ngIf= "!validateEmail(Email.value) && Email.value!== ''">Email is invalid</span>
+      <input #Email id=email required ngModel name="email" type="text" class="form-control" placeholder="Enter your email">
+      <div class="error" *ngIf=" f.submitted">
+        <span *ngIf="!Email.value">Email is required</span>
+        <span *ngIf="!validateEmail(Email.value) && Email.value!== ''">Email is invalid</span>
       </div>
     </div>
     <div>
       <input ngModel name="file" type="file" class="form-file" required (change)="onChange($event)" #fileUpload>
-
       <div>
-        <button type="submit" class="btn-upload" >Upload and Save</button> <span class="container" *ngIf="loading">
-          <h3>Loading...</h3>        </span> 
-    </div>
+      <button mat-raised-button color="primary" type="submit" class="upload-button">Upload and Save</button> 
+      </div>
     </div>
   </fieldset>
 </form>
 
+<mat-accordion class="accordion">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="panel-title">
+        Your Files
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <mat-nav-list *ngIf="multipleFilesNames.length > 0">
+        <a mat-list-item class="link" *ngFor="let fileName of multipleFilesNames" (click)="onDownload(fileName)" download="fileName">{{fileName}}</a>
+     </mat-nav-list>
+     <div *ngIf="multipleFilesNames.length == 0">
+       You have no files
+     </div>
+  </mat-expansion-panel>
+</mat-accordion>
 
-
-<div class="container text-center" *ngIf="multipleFilesNames !== []">
-  <h2>Your Files:</h2>
-  <table>
-    <tr>
-      <th>Want to Download?</th>
-      <th>File Name</th>
-    </tr>
-    <tr *ngFor= 'let file of multipleFilesNames'>
-      <td ></td>
-      <td class = 'td1'>
-      {{file}}</td>
-    </tr>
-  </table>
-</div>
 
