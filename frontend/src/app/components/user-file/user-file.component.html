@@ -19,21 +19,19 @@
 
 
 
-
 <div class="container text-center" *ngIf="multipleFilesNames !== []">
   <h2>Your Files:</h2>
   <table>
     <tr>
-      <th>File Name</th>
       <th>Want to Download?</th>
+      <th>File Name</th>
     </tr>
     <tr *ngFor= 'let file of multipleFilesNames'>
-      <td>
+      <td></td>
+      <td class="td2">
         <div class="container" *ngIf="loading">
         <h3>Loading...</h3>
-      </div>
-        {{file}}</td>
-      <td><button (click)="onDownload(file)">Download</button></td>
+      </div> {{file}}</td>
     </tr>
   </table>
 </div>
