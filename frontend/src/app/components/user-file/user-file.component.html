@@ -2,7 +2,7 @@
 <form (ngSubmit)="onUpload()" #f="ngForm">
   <fieldset class="fieldset-form" ngModelGroup="name">
     <div class="div-form">
-      <label for="email" class="email-label">Your Email: </label>
+      <label for="email" class="email-label">Your Email:</label>
       <input #Email id=email required ngModel name="email" type="text" class="form-control" placeholder="Enter your email">
       <div class="error" *ngIf=" f.submitted">
         <span *ngIf="!Email.value">Email is required</span>
