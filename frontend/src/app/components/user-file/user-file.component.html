@@ -1,8 +1,8 @@
 
 <form (ngSubmit)="onUpload()" #f="ngForm">
-  <fieldset class="form-all" ngModelGroup="name">
-    <div class="form-group">
-      <label for="email" >Your Email: </label>
+  <fieldset class="fieldset-form" ngModelGroup="name">
+    <div class="div-form">
+      <label for="email" class="email-label">Your Email: </label>
       <input #Email id=email required ngModel name="email" type="text" class="form-control" placeholder="Enter your email">
       <div class="error" *ngIf=" f.submitted">
         <span *ngIf="!Email.value">Email is required</span>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div>
-      <input ngModel name="file" type="file" class="form-file" required (change)="onChange($event)" #fileUpload>
+      <input ngModel name="file" type="file" class="input-file" required (change)="onChange($event)" #fileUpload>
       <div>
         <button mat-raised-button color="primary" type="submit" class="upload-button">Upload and Save</button> 
       </div>
@@ -27,10 +27,10 @@
     </mat-expansion-panel-header>
       <mat-nav-list *ngIf="multipleFilesNames.length > 0">
         <a mat-list-item class="link" *ngFor="let fileName of multipleFilesNames" (click)="onDownload(fileName)" download="fileName">{{fileName}}</a>
-     </mat-nav-list>
-     <div *ngIf="multipleFilesNames.length == 0">
-       You have no files
-     </div>
+      </mat-nav-list>
+    <div *ngIf="multipleFilesNames.length == 0">
+        You have no files
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
 

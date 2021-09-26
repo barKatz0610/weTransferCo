@@ -1,7 +1,7 @@
-const express = require('express');//expose the server
-const bodypraser = require('body-parser');//for the jason
+const express = require('express');
+const bodypraser = require('body-parser');
 const cors = require('cors');
-var multer = require('multer');//for the files
+var multer = require('multer');
 const nodemailer = require("nodemailer");
 
 

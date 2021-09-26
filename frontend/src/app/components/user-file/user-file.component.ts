@@ -46,7 +46,6 @@ export class UserFileComponent implements OnInit {
     this.transferService.getFile(path).subscribe(data=>{
       let downloadURL=window.URL.createObjectURL(data);
       saveAs(downloadURL, path);//to download
-    })
+    });
   }
-
 }
